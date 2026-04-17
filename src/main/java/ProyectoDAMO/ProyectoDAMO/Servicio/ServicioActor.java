@@ -1,7 +1,6 @@
 package ProyectoDAMO.ProyectoDAMO.Servicio;
 
 import ProyectoDAMO.ProyectoDAMO.Dominio.Actor;
-import ProyectoDAMO.ProyectoDAMO.Dominio.Pelicula;
 import ProyectoDAMO.ProyectoDAMO.Repositorio.RepositorioActor;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
