@@ -12,10 +12,33 @@ import java.util.List;
 public class ServicioPelicula {
     private final RepositorioPelicula repositorioPelicula;
 
-    public List<Pelicula> obtenerTodas(){
-        return repositorioPelicula.listarPeliculas();
+    //Crear
+    public Pelicula crearPelicula(Pelicula pelicula){
+        return repositorioPelicula.save(pelicula);
     }
-    public  Pelicula guardar(Pelicula pelicula){
-        return  repositorioPelicula.addPelicula(pelicula);
+    //Listar
+    public List<Pelicula> listar(){
+
+        return repositorioPelicula.findAll();
+    }
+    //Buscar por ID
+    public Pelicula buscarPeliculaPorID(Long id){
+
+        return repositorioPelicula.findById(id).orElse(null);
+    }
+    //Borrar por ID
+    public void borrarPeliculaPorID(Long id){
+        repositorioPelicula.deleteById(id);
+        System.out.println("La película con id: " + id + "ha sido eliminada.");
+    }
+    //Actualizar
+    public Pelicula actualizar(Long id, Pelicula nueva) {
+       Pelicula existente = buscarPeliculaPorID(id);
+
+        existente.setTitulo(nueva.getTitulo());
+        existente.setGenero(nueva.getGenero());
+        existente.setAnio(nueva.getAnio());
+
+        return repositorioPelicula.save(existente);
     }
 }

@@ -17,12 +17,33 @@ public class ControladorActor {
 
         private final ServicioActor servicioActor;
 
-        @GetMapping("/lista")
-        public List<Actor> obtenerTodos(){
-            return servicioActor.obtenerTodos();
-        }
-        @PostMapping("/guardar")
-        public Actor guardar (@RequestBody Actor actor){
-            return  servicioActor.guardar(actor);
-        }
+    //Listar
+    @GetMapping("/lista")
+    public List<Actor> listar() {
+        return servicioActor.listar();
+    }
+
+    //Crear
+    @PostMapping("/crear")
+    public Actor crear(@RequestBody Actor actor) {
+        return servicioActor.crearActor(actor);
+    }
+
+    // Buscar por id
+    @GetMapping("/buscar/{id}")
+    public Actor obtener(@PathVariable Long id) {
+        return servicioActor.buscarActorPorID(id);
+    }
+
+    // Borrar por id
+    @DeleteMapping("/borrar/{id}")
+    public void eliminar(@PathVariable Long id) {
+        servicioActor.borrarActorPorID(id);
+    }
+
+    // Actualizar
+    @PutMapping("actualizar/{id}")
+    public Actor actualizar(@PathVariable Long id, @RequestBody Actor actor) {
+        return servicioActor.actualizar(id, actor);
+    }
 }

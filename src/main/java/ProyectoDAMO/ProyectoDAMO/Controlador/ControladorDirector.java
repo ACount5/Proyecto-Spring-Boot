@@ -16,12 +16,33 @@ import java.util.List;
 public class ControladorDirector {
     private final ServicioDirector servicioDirector;
 
+    //Listar
     @GetMapping("/lista")
-    public List<Director> obtenerTodos(){
-        return servicioDirector.obtenerTodos();
+    public List<Director> listar() {
+        return servicioDirector.listar();
     }
-    @PostMapping("/guardar")
-    public Director guardar (@RequestBody Director director){
-        return  servicioDirector.guardar(director);
+
+    //Crear
+    @PostMapping("/crear")
+    public Director crear(@RequestBody Director director) {
+        return servicioDirector.crearDirector(director);
+    }
+
+    // Buscar por id
+    @GetMapping("/buscar/{id}")
+    public Director obtener(@PathVariable Long id) {
+        return servicioDirector.buscarDirectorPorID(id);
+    }
+
+    // Borrar por id
+    @DeleteMapping("/borrar/{id}")
+    public void eliminar(@PathVariable Long id) {
+        servicioDirector.borrarDirectorPorID(id);
+    }
+
+    // Actualizar
+    @PutMapping("actualizar/{id}")
+    public Director actualizar(@PathVariable Long id, @RequestBody Director director) {
+        return servicioDirector.actualizar(id, director);
     }
 }
