@@ -2,6 +2,7 @@ package ProyectoDAMO.ProyectoDAMO.Controlador;
 
 import ProyectoDAMO.ProyectoDAMO.Dominio.Pelicula;
 import ProyectoDAMO.ProyectoDAMO.Servicio.ServicioPelicula;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.springframework.web.bind.annotation.*;
@@ -23,6 +24,7 @@ public class ControladorPelicula {
     }
 
     //Crear
+    @Valid
     @PostMapping("/crear")
     public Pelicula crear(@RequestBody Pelicula pelicula) {
         return servicioPelicula.crearPelicula(pelicula);
