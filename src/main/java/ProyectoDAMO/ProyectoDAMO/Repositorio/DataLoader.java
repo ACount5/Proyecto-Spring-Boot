@@ -4,9 +4,11 @@ import ProyectoDAMO.ProyectoDAMO.Dominio.Actor;
 import ProyectoDAMO.ProyectoDAMO.Dominio.Director;
 import ProyectoDAMO.ProyectoDAMO.Dominio.Pelicula;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 @Component
+@Profile("!test")
 public class DataLoader implements CommandLineRunner {
     private final RepositorioDirector repositorioDirector;
     private final  RepositorioActor repositorioActor;
